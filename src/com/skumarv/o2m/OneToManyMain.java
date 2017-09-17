@@ -1,6 +1,7 @@
-package com.skumarv.o2o;
+package com.skumarv.o2m;
 
-import java.util.Date;
+import java.util.HashSet;
+import java.util.Set;
 
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
@@ -8,10 +9,10 @@ import org.hibernate.Transaction;
 
 import com.skumarv.util.HibernateAnnotationUtil;
 
-public class OneToOneMain {
+public class OneToManyMain {
 	public static void main(String[] args) {
 		SessionFactory sessionFactory = HibernateAnnotationUtil
-				.getSessionFactory("com/skumarv/o2o/hibernate.cfg.xml");
+				.getSessionFactory("com/skumarv/o2m/hibernate.cfg.xml");
 		try {
 			Session session = sessionFactory.openSession();
 			Transaction trans = session.beginTransaction();
@@ -30,24 +31,29 @@ public class OneToOneMain {
 		}
 	}
 
-	public static Txn getData() {
-		Txn txn = new Txn();
-		txn.setDate(new Date());
-		txn.setTotal(123.76);
+	public static Cart getData() {
+		Cart cart = new Cart();
+		cart.setName("Cart Name");
+		cart.setTotal(1763.76);
+		
+		Set<Items> itemsSet = new HashSet<Items>();
+		Items items = new Items();
+		items.setName("Item 1");
+		items.setQuantity(2);
+		items.setTotal(127.87);
+		items.setCart(cart);
+		itemsSet.add(items);
+		
+		
+		items = new Items();
+		items.setName("Item 2");
+		items.setQuantity(4);
+		items.setTotal(764.32);
+		items.setCart(cart);
+		itemsSet.add(items);
+		
+		cart.setItems(itemsSet);
 
-		Address adres = new Address();
-		adres.setAddressLine("Address Line 1");
-		adres.setCity("Chennai");
-		adres.setState("TamilNadu");
-
-		Customer cust = new Customer();
-		cust.setName("Sachin");
-		cust.setEmail("sachin@hotmail.com");
-		cust.setAddress(adres);
-		cust.setTxn(txn);
-
-		txn.setCust(cust);
-
-		return txn;
+		return cart;
 	}
 }

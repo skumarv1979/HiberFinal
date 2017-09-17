@@ -1,4 +1,4 @@
-package com.skumarv.o2o;
+package com.skumarv.util;
 
 import org.hibernate.SessionFactory;
 import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
@@ -9,11 +9,11 @@ public class HibernateAnnotationUtil {
 
 	private static SessionFactory sessionFactory;
 
-	private static SessionFactory buildSessionFactory() {
+	private static SessionFactory buildSessionFactory(String configFile) {
 		try {
 			// Create the SessionFactory from hibernate-annotation.cfg.xml
 			Configuration configuration = new Configuration();
-			configuration.configure("com/skumarv/o2o/hibernate.cfg.xml");
+			configuration.configure(configFile);
 			System.out.println("Hibernate Annotation Configuration loaded");
 
 			ServiceRegistry serviceRegistry = new StandardServiceRegistryBuilder()
@@ -28,9 +28,9 @@ public class HibernateAnnotationUtil {
 		}
 	}
 
-	public static SessionFactory getSessionFactory() {
+	public static SessionFactory getSessionFactory(String configFile) {
 		if (sessionFactory == null)
-			sessionFactory = buildSessionFactory();
+			sessionFactory = buildSessionFactory(configFile);
 		return sessionFactory;
 	}
 }
