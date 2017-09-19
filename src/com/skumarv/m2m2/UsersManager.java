@@ -25,7 +25,7 @@ public class UsersManager {
 		Session session = sessionFactory.openSession();
 		session.beginTransaction();
 
-		Group groupAdmin = new Group("Administrator Group");
+		/*Group groupAdmin = new Group("Administrator Group");
 		Group groupGuest = new Group("Guest Group");
 
 		User user1 = new User("Tom", "tomcat", "tom@codejava.net");
@@ -41,7 +41,20 @@ public class UsersManager {
 		user1.addGroup(groupGuest);
 
 		session.save(groupAdmin);
-		session.save(groupGuest);
+		session.save(groupGuest);*/
+		
+		Group groupIT = new Group("IT Group");
+		User userTm = new User("Skumarv", "java", "skumar@java.net");
+		session.saveOrUpdate(groupIT);
+		session.saveOrUpdate(userTm);
+		
+		/*Group groupGuest = (Group) session.get(Group.class, new Long(2));
+		User user1 = (User) session.get(User.class, new Long(1));
+		
+		groupGuest.addUser(user1);
+		user1.addGroup(groupGuest);
+		
+		session.saveOrUpdate(groupGuest);*/
 
 		session.getTransaction().commit();
 		session.close();

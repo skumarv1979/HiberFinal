@@ -20,6 +20,8 @@ public class User {
 
 	private Set<Group> groups = new HashSet<Group>();
 
+	public User() {
+	}
 	public User(String username, String password, String email) {
 		this.username = username;
 		this.password = password;

@@ -17,7 +17,16 @@ public class OneToManyMain {
 			Session session = sessionFactory.openSession();
 			Transaction trans = session.beginTransaction();
 
-			session.persist(getData());
+			//session.persist(getData());
+			Cart cart = (Cart) session.get(Cart.class, new Long(3));
+			Set<Items> items = setOfItems(cart);
+			cart.setItems(items);
+			session.saveOrUpdate(cart);
+			
+			/*Cart cart = new Cart();
+			cart.setName("Cart Name");
+			cart.setTotal(765.64);
+			session.persist(cart);*/
 
 			trans.commit();
 		} catch (Exception e) {
@@ -31,6 +40,25 @@ public class OneToManyMain {
 		}
 	}
 
+	public static Set<Items> setOfItems(Cart cart) {
+		Set<Items> itemsSet = new HashSet<Items>();
+		Items items = new Items();
+		items.setName("Item 33");
+		items.setQuantity(2);
+		items.setTotal(127.87);
+		items.setCart(cart);
+		itemsSet.add(items);
+		
+		
+		items = new Items();
+		items.setName("Item 44");
+		items.setQuantity(4);
+		items.setTotal(764.32);
+		items.setCart(cart);
+		itemsSet.add(items);
+		
+		return itemsSet;
+	}
 	public static Cart getData() {
 		Cart cart = new Cart();
 		cart.setName("Cart Name");

@@ -21,6 +21,8 @@ public class Group {
 
 	private Set<User> users = new HashSet<User>();
 
+	public Group() {
+	}
 	public Group(String name) {
 		this.name = name;
 	}
