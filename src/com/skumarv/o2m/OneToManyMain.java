@@ -12,7 +12,7 @@ import com.skumarv.util.HibernateAnnotationUtil;
 public class OneToManyMain {
 	public static void main(String[] args) {
 		SessionFactory sessionFactory = HibernateAnnotationUtil
-				.getSessionFactory("com/skumarv/o2m/hibernate.cfg.xml");
+				.getSessionFactory();
 		try {
 			Session session = sessionFactory.openSession();
 			Transaction trans = session.beginTransaction();

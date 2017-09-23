@@ -13,7 +13,7 @@ public class Many2ManyTester {
 
 		// builds a session factory from the service registry
 		SessionFactory sessionFactory = HibernateAnnotationUtil
-				.getSessionFactory("com/skumarv/m2m3/hibernate.cfg.xml");
+				.getSessionFactory();
 
 		// obtains the session
 		Session session = sessionFactory.openSession();

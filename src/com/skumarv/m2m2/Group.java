@@ -13,7 +13,7 @@ import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 
-@Entity
+@Entity(name="Groups")
 @Table(name = "GROUPS")
 public class Group {
 	private long id;

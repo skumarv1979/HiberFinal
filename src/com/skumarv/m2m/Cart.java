@@ -15,7 +15,7 @@ import javax.persistence.Table;
 import org.hibernate.annotations.Cascade;
 import org.hibernate.annotations.CascadeType;
 
-@Entity
+@Entity(name="CartM2m")
 @Table(name="CARTM2M")
 public class Cart {
 	@Id

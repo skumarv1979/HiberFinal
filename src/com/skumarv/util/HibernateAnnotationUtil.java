@@ -9,11 +9,11 @@ public class HibernateAnnotationUtil {
 
 	private static SessionFactory sessionFactory;
 
-	private static SessionFactory buildSessionFactory(String configFile) {
+	private static SessionFactory buildSessionFactory() {
 		try {
 			// Create the SessionFactory from hibernate-annotation.cfg.xml
 			Configuration configuration = new Configuration();
-			configuration.configure(configFile);
+			configuration.configure();
 			System.out.println("Hibernate Annotation Configuration loaded");
 
 			ServiceRegistry serviceRegistry = new StandardServiceRegistryBuilder()
@@ -28,9 +28,9 @@ public class HibernateAnnotationUtil {
 		}
 	}
 
-	public static SessionFactory getSessionFactory(String configFile) {
+	public static SessionFactory getSessionFactory() {
 		if (sessionFactory == null)
-			sessionFactory = buildSessionFactory(configFile);
+			sessionFactory = buildSessionFactory();
 		return sessionFactory;
 	}
 }

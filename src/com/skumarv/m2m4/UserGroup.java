@@ -13,7 +13,7 @@ import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.persistence.Transient;
 
-@Entity
+@Entity(name="UsersGroups3")
 @Table(name = "USERS_GROUPS3")
 @AssociationOverrides({
 	@AssociationOverride(name = "primaryKey.user", 

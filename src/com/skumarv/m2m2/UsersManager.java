@@ -19,7 +19,7 @@ public class UsersManager {
 
 		// builds a session factory from the service registry
 		SessionFactory sessionFactory = HibernateAnnotationUtil
-				.getSessionFactory("com/skumarv/m2m2/hibernate.cfg.xml");
+				.getSessionFactory();
 
 		// obtains the session
 		Session session = sessionFactory.openSession();
@@ -43,8 +43,8 @@ public class UsersManager {
 		session.save(groupAdmin);
 		session.save(groupGuest);*/
 		
-		Group groupIT = new Group("IT Group");
-		User userTm = new User("Skumarv", "java", "skumar@java.net");
+		Group groupIT = new Group("Runners Group");
+		User userTm = new User("Skumarv", "runner", "skumar@run.net");
 		session.saveOrUpdate(groupIT);
 		session.saveOrUpdate(userTm);
 		

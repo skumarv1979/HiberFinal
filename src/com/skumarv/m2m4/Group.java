@@ -11,7 +11,7 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
-@Entity
+@Entity(name="Groups3")
 @Table(name = "GROUPS3")
 public class Group {
 	private long id;

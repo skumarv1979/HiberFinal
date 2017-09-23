@@ -22,7 +22,7 @@ public class StockManager {
 		
 		// builds a session factory from the service registry
 		SessionFactory sessionFactory = HibernateAnnotationUtil
-				.getSessionFactory("com/skumarv/o2m2/hibernate.cfg.xml");
+				.getSessionFactory();
 		
 		// obtains the session
 		Session session = sessionFactory.openSession();
