@@ -30,5 +30,11 @@
 		<mapping class="com.skumarv.o2m2.Product"/>
 		<mapping class="com.skumarv.o2o.Txn"/>
 		<mapping class="com.skumarv.o2o.Customer"/>
+		<mapping class="com.skumarv.m2mtest.Users"/>
+		<mapping class="com.skumarv.m2mtest.Groups"/>
+		<mapping class="com.skumarv.test.entity.Pack"/>
+		<mapping class="com.skumarv.test.entity.Channel"/>
+		<mapping class="com.skumarv.test.entity.Trans"/>
+		<mapping class="com.skumarv.test.entity.Cust"/>
 	</session-factory>
 </hibernate-configuration>
