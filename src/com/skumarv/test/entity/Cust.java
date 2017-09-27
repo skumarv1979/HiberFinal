@@ -2,6 +2,7 @@ package com.skumarv.test.entity;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -10,12 +11,16 @@ import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="TRANS")
+@Table(name="CUST")
 public class Cust {
 	@Id
-	@Column(name="CID")
-	@GeneratedValue
+	@Column(name="CID", unique=true, nullable=false)
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private int cno;
+	
+	@OneToOne(fetch=FetchType.LAZY)
+	@JoinColumn(name="TID")
+	private Trans trans;
 	
 	@Column(name="NAME")
 	private String name;
@@ -31,5 +36,11 @@ public class Cust {
 	}
 	public void setName(String name) {
 		this.name = name;
+	}
+	public Trans getTrans() {
+		return trans;
+	}
+	public void setTrans(Trans trans) {
+		this.trans = trans;
 	}
 }

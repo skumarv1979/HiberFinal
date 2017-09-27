@@ -21,6 +21,7 @@ public class TransCustDAO {
 	}
 	public void insertTranCust(Trans trans, Cust cust) {
 		trans.setCust(cust);
+		cust.setTrans(trans);
 		SessionFactory sf = HibernateAnnotationUtil.getSessionFactory();
 		Session session = sf.openSession();
 		Transaction txn = session.beginTransaction();

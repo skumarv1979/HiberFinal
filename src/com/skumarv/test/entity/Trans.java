@@ -3,6 +3,7 @@ package com.skumarv.test.entity;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -13,14 +14,14 @@ import javax.persistence.Table;
 @Table(name="TRANS")
 public class Trans {
 	@Id
-	@Column(name="TNO")
-	@GeneratedValue
+	@Column(name="T_NO")
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private int txn;
 	
 	@Column(name="AMOUNT")
 	private double amount;
 	
-	@OneToOne(cascade=CascadeType.ALL)
+	@OneToOne(fetch=FetchType.LAZY, mappedBy="trans", cascade=CascadeType.ALL)
 	private Cust cust;
 	
 	public int getTxn() {
