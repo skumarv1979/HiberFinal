@@ -8,6 +8,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
@@ -22,6 +23,8 @@ public class Pack {
 	private String name;
 	@OneToMany(mappedBy="pack",cascade=CascadeType.ALL)
 	private Set<Channel> channels;
+	@ManyToMany(mappedBy="packs")
+	private Set<Customer> customers;
 	public int getId() {
 		return id;
 	}
@@ -40,4 +43,16 @@ public class Pack {
 	public void setChannels(Set<Channel> channels) {
 		this.channels = channels;
 	}
+	public Set<Customer> getCustomers() {
+		return customers;
+	}
+	public void setCustomers(Set<Customer> customers) {
+		this.customers = customers;
+	}
+	@Override
+	public String toString() {
+		return "Pack [id=" + id + ", name=" + name + ", channels=" + channels
+				+ "]";
+	}
+	
 }

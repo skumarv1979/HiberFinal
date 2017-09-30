@@ -20,15 +20,16 @@ public class ChannelDAO {
 
 	public static void main(String[] args) {
 		ChannelDAO chnlDao = new ChannelDAO();
-		/*
-		 * List<Pack> packLst = chnlDao.getPackList(); for (Pack pack : packLst)
-		 * { chnlDao.insertPackage(pack); }
-		 */
-		Map<Integer, Set<Channel>> mp = chnlDao.getChannels();
+		
+		 List<Pack> packLst = chnlDao.getPackList(); 
+		 for (Pack pack : packLst)
+		 { chnlDao.insertPackage(pack); }
+		 
+		/*Map<Integer, Set<Channel>> mp = chnlDao.getChannels();
 		Set<Entry<Integer, Set<Channel>>> entrySet = mp.entrySet();
 		for (Entry<Integer, Set<Channel>> entry : entrySet) {
 			chnlDao.updateChannels(entry.getKey(), entry.getValue());
-		}
+		}*/
 	}
 
 	public void updateChannels(int packId, Set<Channel> channels) {
@@ -65,15 +66,15 @@ public class ChannelDAO {
 	public List<Pack> getPackList() {
 		List<Pack> packLst = new ArrayList<Pack>();
 		Pack pack = new Pack();
-		pack.setName("Package 1");
+		pack.setName("Package 4");
 		packLst.add(pack);
 
 		pack = new Pack();
-		pack.setName("Package 2");
+		pack.setName("Package 5");
 		packLst.add(pack);
 
 		pack = new Pack();
-		pack.setName("Package 3");
+		pack.setName("Package 6");
 		packLst.add(pack);
 
 		return packLst;

@@ -39,4 +39,9 @@ public class Channel {
 	public void setPack(Pack pack) {
 		this.pack = pack;
 	}
+	@Override
+	public String toString() {
+		return "Channel [id=" + id + ", name=" + name + "]";
+	}
+	
 }

@@ -36,5 +36,6 @@
 		<mapping class="com.skumarv.test.entity.Channel"/>
 		<mapping class="com.skumarv.test.entity.Trans"/>
 		<mapping class="com.skumarv.test.entity.Cust"/>
+		<mapping class="com.skumarv.test.entity.Customer"/>
 	</session-factory>
 </hibernate-configuration>
