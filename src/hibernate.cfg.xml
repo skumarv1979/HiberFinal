@@ -37,5 +37,8 @@
 		<mapping class="com.skumarv.test.entity.Trans"/>
 		<mapping class="com.skumarv.test.entity.Cust"/>
 		<mapping class="com.skumarv.test.entity.Customer"/>
+		<mapping class="com.skumarv.m2m.with.spk.UserGroup"/>
+		<mapping class="com.skumarv.m2m.with.spk.Group"/>
+		<mapping class="com.skumarv.m2m.with.spk.User"/>
 	</session-factory>
 </hibernate-configuration>
