@@ -1,5 +1,7 @@
 package com.skumarv.test.dao;
 
+import java.util.Calendar;
+import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -7,6 +9,8 @@ import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 
+import com.skumarv.test.entity.AdditionalChannel;
+import com.skumarv.test.entity.AdditionalChannelId;
 import com.skumarv.test.entity.Channel;
 import com.skumarv.test.entity.Customer;
 import com.skumarv.test.entity.Address;
@@ -37,8 +41,62 @@ public class CustomerDAO {
 		custDao.insertCustomer(cust, adress);*/
 		
 		//custDao.subscription(2, 3);
-		custDao.getCustomer(2);
+		//custDao.getCustomer(2);
+		custDao.subscribeAdditionalChannel(2,2);
 
+	}
+	public void subscribeAdditionalChannel(int cuid, int chid) {
+		SessionFactory sf = HibernateAnnotationUtil.getSessionFactory();
+		Session session = sf.openSession();
+		Transaction trans = session.beginTransaction();
+		
+		Customer cust = (Customer) session.get(Customer.class, new Integer(cuid));
+		if(cust!=null) {
+			Channel channel = (Channel) session.get(Channel.class, new Integer(chid));
+			if(channel!=null) {
+				Set<Pack> packs = cust.getPacks();
+				boolean isAlreadyInPacks = false;
+				if(packs!=null && !packs.isEmpty()) {
+					for (Pack pack : packs) {
+						Set<Channel> channels = pack.getChannels();
+						if(channels!=null && !channels.isEmpty()) {
+							if(channels.contains(channel)) {
+								isAlreadyInPacks = true;
+								break;
+							}
+						}
+					}
+				}
+				if(!isAlreadyInPacks) {
+					Calendar endDt = Calendar.getInstance();
+					endDt.setTime(new Date());
+					endDt.add(Calendar.DATE, 20);
+					Date stDt = new Date();
+					AdditionalChannel addChann = new AdditionalChannel();
+					AdditionalChannelId adChId = new AdditionalChannelId();
+					adChId.setChannel(channel);
+					adChId.setCust(cust);
+					addChann.setPrimary(adChId);
+					addChann.setStDate(stDt);
+					addChann.setEndDate(endDt.getTime());
+					session.saveOrUpdate(addChann);
+				}
+				else {
+					System.out.println("Channel already part of Package");
+				}
+			}
+			else {
+				System.out.println("Invalid channel");
+			}
+		}
+		else {
+			System.out.println("Invalid customer");
+		}
+		
+		
+		trans.commit();
+		session.flush();
+		session.close();
 	}
 	public void getCustomer(int cid) {
 		SessionFactory sf = HibernateAnnotationUtil.getSessionFactory();

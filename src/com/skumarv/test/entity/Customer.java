@@ -12,6 +12,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity(name="CustomerTest")
@@ -29,6 +30,9 @@ public class Customer {
 	@ManyToMany(cascade=CascadeType.ALL)
 	@JoinTable(name="SUBSCRIPTION", joinColumns={@JoinColumn(name="CID")},inverseJoinColumns={@JoinColumn(name="PID")})
 	private Set<Pack> packs;
+
+	@OneToMany(mappedBy="primary.channel",cascade=CascadeType.ALL)
+	private Set<AdditionalChannel> channels;
 	public int getCno() {
 		return cno;
 	}
@@ -57,6 +61,12 @@ public class Customer {
 	public String toString() {
 		return "Customer [cno=" + cno + ", name=" + name + ", address="
 				+ address + ", packs=" + packs + "]";
+	}
+	public Set<AdditionalChannel> getChannels() {
+		return channels;
+	}
+	public void setChannels(Set<AdditionalChannel> channels) {
+		this.channels = channels;
 	}
 	
 }
