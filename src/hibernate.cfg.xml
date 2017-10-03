@@ -41,5 +41,14 @@
 		<mapping class="com.skumarv.m2m.with.spk.UserGroup"/>
 		<mapping class="com.skumarv.m2m.with.spk.Group"/>
 		<mapping class="com.skumarv.m2m.with.spk.User"/>
+		<mapping class="com.skumarv.test.inhertance.tph.Employee"/>
+		<mapping class="com.skumarv.test.inhertance.tph.RegularEmployee" />
+		<mapping class="com.skumarv.test.inhertance.tph.ContractEmployee" />
+		<mapping class="com.skumarv.test.inhertance.tpc.Employee"/>
+		<mapping class="com.skumarv.test.inhertance.tpc.RegularEmployee" />
+		<mapping class="com.skumarv.test.inhertance.tpc.ContractEmployee" />
+		<mapping class="com.skumarv.test.inhertance.tps.Employee"/>
+		<mapping class="com.skumarv.test.inhertance.tps.RegularEmployee" />
+		<mapping class="com.skumarv.test.inhertance.tps.ContractEmployee" />
 	</session-factory>
 </hibernate-configuration>
